@@ -108,15 +108,19 @@ if __name__ == '__main__':
         while not (len(letras_incorrectas) < 6) or ('_' in intento):
 
             character = input('choose a letter: ').lower()
+            if character.isalpha():
 
-            intento = find_character(character, secret_word, intento)
-            print(intento)
-            print(AHORCADO[len(letras_incorrectas)])
+                intento = find_character(character, secret_word, intento)
+                print(intento)
+                print(AHORCADO[len(letras_incorrectas)])
+                print(','.join(letras_incorrectas)+','+','.join(letras_correcta))
 
-            if len(letras_incorrectas) == 6:
-                print('Game over!')
-                print(AHORCADO[6])
-                break
+                if len(letras_incorrectas) == 6:
+                    print('Game over!')
+                    print(AHORCADO[6])
+                    break
+            else:
+                print(f'{character} is not a valid character, try again')
         else:
             print('Congratulations word found!')
 
